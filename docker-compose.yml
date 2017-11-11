@@ -13,6 +13,9 @@ services:
     container_name: postgres
     volumes:
       - c:/postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
   sonar:
     image: sonarqube
     container_name: sonar
