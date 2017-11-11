@@ -8,4 +8,22 @@ services:
       - 8080:8080
     volumes:
       - ./jenkins-data:/var/jenkins_home
-  
+  postgres:
+    image: postgres
+      container_name: postgres
+      volumes:
+        - ./postgres-data:/var/lib/postgresql/data
+  sonar:
+    image: sonarqube
+    container_name: sonar
+    ports:
+      - 9000:9000
+      - 9092:9092
+    environment:
+      SONARQUBE_JDBC_USERNAME: sonar
+      SONARQUBE_JDBC_PASSWORD: sonar
+      SONARQUBE_JDBC_URL: jdbc:postgresql://db/sonar 
+    depends_on:
+      - postgres
+    links:
+      - postgres:db
