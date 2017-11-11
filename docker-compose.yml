@@ -12,7 +12,7 @@ services:
     image: postgres
     container_name: postgres
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - c:/postgres-data:/var/lib/postgresql/data
   sonar:
     image: sonarqube
     container_name: sonar
